@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "kaushan";
+    src: url("/font/kaushan.ttf");
+}
+@font-face {
+    font-family: "comforta";
+    src: url("/font/comforta.ttf");
+}
+@font-face {
+    font-family: "comforta-bold";
+    src: url("/font/comforta-bold.ttf");
+}
+
+@layer components {
+    .bg-green-gradient {
+        @apply bg-gradient-to-r from-dark-green to-green;
+    }
+}
