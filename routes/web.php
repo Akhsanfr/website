@@ -18,6 +18,8 @@ use Inertia\Inertia;
 
 Route::get('/{url}', function($url){
     $user = Undangan::where('url', $url)->first();
+    $user->akses_undangan = $user->akses_undangan + 1;
+    $user->save();
     return Inertia::render('Index', ['user' => $user]);
 });
 
