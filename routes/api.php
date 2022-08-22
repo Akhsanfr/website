@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Pesan;
+use App\Models\Undangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +17,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/konfirmasi', function(Request $request){
+    $undangan = Undangan::where('url', $request->param)->first();
+    $undangan->hadir = $request->hadir;
+    $undangan->save();
+    return redirect('/'.$request->param);
 });
 
-Route::get('/tes', function(){
-    return ['nama' => 'Fernanda'];
+Route::get('/pesan', function(){
+     $pesan = Pesan::with('undangan')->get();
+     return $pesan;
 });
 
-Route::get('/bg', function(){
-    return ['bg' => '/img/tes-bg-amplop.png'];
+Route::post('/pesan', function(Request $request){
+    $pesan = Pesan::where('undangan_id', $request->id)->first();
+    if($pesan){
+        $pesan->isi = $request->isi;
+        $pesan->undangan_id = $request->id;
+        $pesan->save();
+    } else {
+        $pesan = new Pesan();
+        $pesan->isi = $request->isi;
+        $pesan->undangan_id = $request->id;
+        $pesan->save();
+    }
+    return redirect('/'.$request->param);
 });

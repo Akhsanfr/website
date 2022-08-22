@@ -16,7 +16,54 @@
 }
 
 @layer components {
+    .btn {
+        @apply overflow-hidden
+            text-lime-50
+            rounded-lg
+            relative
+            hover:text-lime-100
+            z-10
+            hover:before:translate-x-0
+            before:transition;
+    }
+    .btn::before {
+        @apply absolute bg-green-gradient h-full w-[200%] top-0 left-0
+        -translate-x-1/2
+        -z-10
+         content-[''];
+    }
+    .btn-sm {
+        @apply p-2 text-lg;
+    }
+
     .bg-green-gradient {
         @apply bg-gradient-to-r from-dark-green to-green;
+    }
+    .bg-yellow-gradient {
+        @apply bg-gradient-to-r from-dark-yellow to-yellow;
+    }
+    .text-yellow-gradient {
+        @apply text-transparent bg-clip-text bg-gradient-to-br from-light-green to-light-yellow;
+    }
+    .group-index-content {
+        @apply relative flex flex-col items-center px-10;
+    }
+    .group-index-content .judul {
+        @apply text-3xl md:text-5xl font-kaushan;
+    }
+    .group-index-content .isi {
+        @apply z-40 w-full flex flex-col items-center justify-center min-h-screen;
+    }
+    .group-index-content .gambar {
+        @apply absolute z-0;
+    }
+    .group-index-content .seksi-acara {
+        @apply mt-2;
+    }
+    .group-index-content .seksi-acara h2 {
+        @apply text-2xl md:text-4xl font-kaushan;
+    }
+    .group-index-content .seksi-acara p:nth-child(2) {
+        @apply text-sm font-comforta-bold mt-1;
     }
 }

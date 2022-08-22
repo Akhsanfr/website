@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Models\Pesan;
 use App\Models\Undangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,15 +18,19 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/{url}', function($url){
-    $user = Undangan::where('url', $url)->first();
+Route::get('/{param}', function($param){
+    $user = Undangan::where('url', $param)->first();
     $user->akses_undangan = $user->akses_undangan + 1;
     $user->save();
-    return Inertia::render('Index', ['user' => $user]);
+    return Inertia::render('Index/Index', ['user' => $user, 'param' => $param]);
 });
 
 Route::get('/', function () {
-    return Inertia::render('Index');
+    return Inertia::render('Index/Index');
+});
+
+Route::prefix('admin')->controller(AdminController::class)->group(function(){
+    Route::get('cek-akses', 'cekAkses');
 });
 
 // Route::get('/tes', function(){
@@ -37,21 +43,30 @@ Route::get('/', function () {
 
 Route::get('/cetak/peta-belakang',function(){
     $undangans = Undangan::where('tipe', 'cetak')
-    ->where('url', 'tri-598')
-    ->orWhere('url', 'anto-602')
-    ->orWhere('url', 'crah-603')
-    ->orWhere('url', 'yudi-604')
-    ->orderBy('id', 'desc')
+    ->where('url', 'wahyu-790')
+    ->orWhere('url', 'siti-791')
+    // ->orWhere('url', 'tutik-568')
+    // ->orderBy('id', 'desc')
     ->get()
     ;
-    return Inertia::render('Cetak/PetaBelakang', ["undangans" => $undangans]);
+    return Inertia::render('Cetak/PetaBelakang', ["undangans" => $undangans, "skip" => 0]);
 });
 
 // Route::get('/print-peta-depan', function(){
 //     return Inertia::render('PrintPetaDepan');
 // });
 
-Route::get('/cetak/label', function(){
-    $undangans = Undangan::where('tipe', 'cetak')->get();
-    return Inertia::render('Cetak/Label', ['undangans' => $undangans]);
-});
+// Route::get('/cetak/label', function(){
+//     // $undangans = Undangan::where('tipe', 'cetak')->get();
+//     $undangans = Undangan
+//         ::where('url', 'wahyu-790')
+//         ->orWhere('url', 'siti-791')
+//         ->get();
+//         // dd($undangans);
+//     return Inertia::render('Cetak/Label', ['undangans' => $undangans]);
+// });
+
+// Route::get('/gg/gg', function(){
+//     $pesans = Pesan::with('undangan')->get();
+//     dd($pesans);
+// });

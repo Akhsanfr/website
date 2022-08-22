@@ -1,5 +1,8 @@
 <template>
     <div ref="printArea" class="w-[8.5in] h-screen flex flex-wrap">
+        <template v-if="skip">
+            <div class="w-[4.25in] h-[6.5in]" v-for="n in skip" :key="n"></div>
+        </template>
         <PrintPetaBelakangImg
             v-for="undangan in undangans"
             :key="undangan.id"
@@ -12,7 +15,7 @@
 <script>
 import PrintPetaBelakangImg from "./PetaBelakangImg.vue";
 export default {
-    props: ["undangans"],
+    props: ["undangans", "skip"],
     mounted() {
         // const printContent = this.$refs.printArea;
         // const WinPrint = window.open("", "", "width=216mm,height=330mm");
