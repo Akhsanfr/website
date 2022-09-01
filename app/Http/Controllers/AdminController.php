@@ -13,4 +13,9 @@ class AdminController extends Controller
             'undangans' => Undangan::orderBy('akses_undangan','desc')->get()
         ]);
     }
+    public function tabel(){
+        return Inertia::render('Admin/AdminTabel', [
+            'users' => Undangan::all()
+        ]);
+    }
 }

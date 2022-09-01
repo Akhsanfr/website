@@ -19,7 +19,7 @@ use Inertia\Inertia;
 
 Route::post('/konfirmasi', function(Request $request){
     $undangan = Undangan::where('url', $request->param)->first();
-    $undangan->hadir = $request->hadir;
+    $undangan->hadir_ke = $request->hadir_ke;
     $undangan->save();
     return redirect('/'.$request->param);
 });

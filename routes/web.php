@@ -20,6 +20,9 @@ use Inertia\Inertia;
 
 Route::get('/{param}', function($param){
     $user = Undangan::where('url', $param)->first();
+    if(!$user){
+        return Inertia::render('Index/Index');
+    }
     $user->akses_undangan = $user->akses_undangan + 1;
     $user->save();
     return Inertia::render('Index/Index', ['user' => $user, 'param' => $param]);
@@ -31,11 +34,9 @@ Route::get('/', function () {
 
 Route::prefix('admin')->controller(AdminController::class)->group(function(){
     Route::get('cek-akses', 'cekAkses');
+    Route::get('tabel', 'tabel');
 });
 
-// Route::get('/tes', function(){
-//     return Inertia::share('nama', 'Fernanda');
-// });
 
 // Route::get('/generate-qrcode', function(){
 //     return Inertia::render('TesQrcode');
@@ -43,10 +44,7 @@ Route::prefix('admin')->controller(AdminController::class)->group(function(){
 
 Route::get('/cetak/peta-belakang',function(){
     $undangans = Undangan::where('tipe', 'cetak')
-    ->where('url', 'wahyu-790')
-    ->orWhere('url', 'siti-791')
-    // ->orWhere('url', 'tutik-568')
-    // ->orderBy('id', 'desc')
+    ->where('url', 'nurizza-793')
     ->get()
     ;
     return Inertia::render('Cetak/PetaBelakang', ["undangans" => $undangans, "skip" => 0]);
@@ -56,17 +54,13 @@ Route::get('/cetak/peta-belakang',function(){
 //     return Inertia::render('PrintPetaDepan');
 // });
 
-// Route::get('/cetak/label', function(){
-//     // $undangans = Undangan::where('tipe', 'cetak')->get();
-//     $undangans = Undangan
-//         ::where('url', 'wahyu-790')
-//         ->orWhere('url', 'siti-791')
-//         ->get();
-//         // dd($undangans);
-//     return Inertia::render('Cetak/Label', ['undangans' => $undangans]);
-// });
+Route::get('/cetak/label', function(){
+    $undangans = Undangan
+        ::where('url', 'nurul-618')
+        ->get();
+    return Inertia::render('Cetak/Label', ['undangans' => $undangans, 'skip' => 0]);
+});
 
-// Route::get('/gg/gg', function(){
-//     $pesans = Pesan::with('undangan')->get();
-//     dd($pesans);
-// });
+Route::get('/tes/online-poster', function(){
+    return Inertia::render('Online/OnlinePoster');
+});

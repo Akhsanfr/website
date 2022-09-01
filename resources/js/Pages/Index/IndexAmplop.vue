@@ -1,104 +1,94 @@
 <template>
     <div>
+        <!-- Amplop -->
         <div
-            class="transition duration-[5s] relative h-screen w-screen overflow-clip"
+            class="transition duration-[4s] relative h-screen w-screen overflow-clip"
             :class="[{ '-translate-y-full': !$parent.amplop }]"
+            :style="{ height: windowHeight + 150 + 'px' }"
         >
             <!-- bg -->
-            <div
-                class="absolute transition duration-[4s]"
-                :style="{
-                    transform: !$parent.amplop
-                        ? 'translateY(-' + 350 + 'px)'
-                        : '',
-                }"
-            >
+            <div class="absolute transition">
                 <div
-                    style="background-image: url('/img/bg.png')"
                     class="h-screen w-screen"
+                    style="background-image: url('/img/bg.png')"
+                >
+                    >
+                </div>
+                <div
+                    style="background-image: url('/img/batas.png')"
+                    class="h-[150px]"
                 ></div>
-                <!-- <img src="/img/tes-halaman-1/batas.png" /> -->
             </div>
             <!-- Bunga bg kiri atas -->
             <img
-                class="transition -scale-x-100 duration-[3s] absolute top-[-40px] left-[-80px] opacity-20"
-                src="/img/bunga-3.png"
+                class="transition md:scale-x-[-2] md:scale-y-[2] scale-x-[-1] scale-y-[1] duration-[5s] absolute top-[-50px] left-[-75px] opacity-25"
+                src="/img/bunga-2.png"
                 :class="{ '-translate-y-full': !$parent.amplop }"
             />
             <!-- Bunga bg kanan bawah -->
             <img
-                class="transition -scale-y-100 duration-[3s] absolute -bottom-[30px] -right-[70px] opacity-20"
-                src="/img/bunga-1.png"
+                class="transition md:scale-x-[2] md:scale-y-[-2] scale-x-[1] scale-y-[-1] duration-[5s] absolute bottom-[75px] -right-[75px] opacity-50"
+                src="/img/bunga-2.png"
                 :class="{ '-translate-y-full': !$parent.amplop }"
             />
             <!-- Bunga atas kanan 746 × 682 -->
             <img
-                class="transition duration-[4s] h-[300px] absolute -top-[75px] -right-[50px] fade-in-top"
-                src="/img/bunga-3.png"
+                class="transition duration-[5s] h-[300px] absolute -top-[75px] -right-[50px] fade-in-top"
+                src="/img/bunga-2.png"
                 :class="{
                     '-translate-y-full': !$parent.amplop,
                 }"
             />
             <!-- Bercak -->
             <img
-                class="transition duration-[4s] absolute top-[250px] -left-[150px]"
+                class="transition scale-[1] md:scale-[2] duration-[5s] absolute top-[250px] -left-[150px]"
                 src="/img/bercak.png"
                 :class="{ '-translate-y-full': !$parent.amplop }"
             />
-            <!-- Title -->
+            <!-- Main Frame -->
             <div
                 class="absolute h-screen w-screen flex items-center flex-col justify-center"
             >
                 <div
-                    class="rounded shadow-xl"
+                    class="rounded shadow-xl p-4 md:p-8"
                     style="background-color: rgba(240, 240, 240, 0.6)"
                 >
-                    <div
-                        style="background-image: url('/img/bg.png')"
-                        class="m-4 md:m-8 border-yellow border-4 p-8 sm:p-20 flex flex-col items-center"
-                    >
-                        <h1
-                            class="mb-4 tracking-[1em] text-[0.5em] sm:text-xl md:text-2xl whitespace-nowrap focus-in-contract"
+                    <div class="bg-gradient-to-r from-dark-yellow to-light-yellow p-2">
+                        <div
+                            style="background-image: url('/img/bg.png')"
+                            class="p-4 md:p-8 border-yellow flex flex-col items-center"
                         >
-                            The Wedding of
-                        </h1>
-                        <p
-                            class="text-4xl sm:text-5xl md:text-6xl font-kaushan flex flex-col items-center focus-in-contract"
-                        >
-                            <span>Fernanda</span>
-                            <span>&</span>
-                            <span>Silvara</span>
-                        </p>
+                            <h1
+                                class="mb-4 tracking-[1em] text-xs sm:text-xl md:text-2xl whitespace-nowrap focus-in-contract"
+                            >
+                                The Wedding of
+                            </h1>
+                            <p
+                                class="text-5xl sm:text-6xl md:text-7xl font-kaushan flex flex-col items-center focus-in-contract"
+                            >
+                                <span>Fernanda</span>
+                                <span>&</span>
+                                <span>Silvara</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bungan bawah kiri
-            <img
-                class="transition scale-[1.5] sm:scale-[0.8] md:scale-[0.8] duration-[3s] absolute -bottom-[100px] sm:bottom-[-250] md:bottom-[-220px] -left-[150px] md:left-[20px] fade-in-bottom"
-                src="/img/bunga-1.png"
-                :style="{
-                    transform: !$parent.amplop
-                        ? 'translateY(-' + (windowHeight + 100) + 'px)'
-                        : '',
-                }"
-            /> -->
             <!-- Bungan bawah kiri -->
             <img
-                class="transition h-[400px] sm:scale-[0.8] md:scale-[0.8] duration-[3s] absolute -bottom-[75px] sm:bottom-[-250] md:bottom-[-220px] -left-[150px] md:left-[20px] fade-in-bottom"
+                class="transition max-h-[400px] duration-[5s] absolute bottom-[100px] -left-[150px] md:left-[20px] fade-in-bottom"
                 src="/img/bunga-1.png"
+                style="opacity: 0"
                 :style="{
-                    transform: !$parent.amplop
-                        ? 'translateY(-' + (windowHeight + 100) + 'px)'
-                        : '',
+                    transform: !$parent.amplop ? 'translateY(100px)' : '',
                 }"
             />
+            <!-- Action -->
             <div
-                class="duration-[4s] absolute md:bottom-10 bottom-20 w-screen flex flex-col items-center space-y-4"
+                class="duration-[5s] absolute bottom-[200px] w-screen flex flex-col items-center space-y-4"
                 :style="{
-                    transform: !$parent.amplop
-                        ? 'translateY(-' + windowHeight + 'px)'
-                        : '',
+                    transform: !$parent.amplop ? 'translateY(50px)' : '',
                 }"
             >
                 <div class="shadow-xl flex w-fit text-md fade-in-bottom-a">
@@ -118,14 +108,13 @@
                         <span v-else> Silakan scan barcode undangan Anda </span>
                     </div>
                 </div>
-                <div class="relative fade-in-bottom-b" @click="comingSoon">
-                    <!-- @click="$emit('closeAmplop')" -->
-                    <!-- <p class="-bold text-gray-100 text-xs pr-8">Cooming Soon</p> -->
+                <div class="relative fade-in-bottom-b">
                     <button
                         class="btn z-0 py-2 pl-4 pr-6"
                         :class="{
                             'vibrate-1': comingSoonVibrate,
                         }"
+                        @click="closeAmplop"
                     >
                         {{ textTombol }}
                     </button>
@@ -167,12 +156,13 @@ export default {
         };
     },
     methods: {
-        comingSoon() {
-            this.textTombol = "Coming Soon";
-            this.comingSoonVibrate = true;
-            setTimeout(() => {
-                this.comingSoonVibrate = false;
-            }, 1000);
+        closeAmplop() {
+            this.$emit("closeAmplop");
+            // this.textTombol = "Coming Soon";
+            // this.comingSoonVibrate = true;
+            // setTimeout(() => {
+            //     this.comingSoonVibrate = false;
+            // }, 1000);
         },
     },
     mounted() {

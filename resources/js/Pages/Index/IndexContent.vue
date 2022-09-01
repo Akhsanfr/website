@@ -10,67 +10,54 @@
                 src="/img/amplop-bunga-bawah-kiri.png"
             />
         </div> -->
-        <IndexMempelai />
-        <div class="group-index-content">
-            <div class="isi py-20">
-                <h1 class="judul">Kisah Perjalanan Kami</h1>
-                <div class="flex flex-col space-y-4">
-                    <IndexContentKisah
-                        type="kiri"
-                        kisah="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam excepturi ut repellat aliquid accusantium voluptatum minima deserunt quasi neque tenetur."
-                    />
-                    <IndexContentKisah
-                        type="kanan"
-                        kisah="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam excepturi ut repellat aliquid accusantium voluptatum minima deserunt quasi neque tenetur."
-                    />
-                    <IndexContentKisah
-                        type="kiri"
-                        kisah="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam excepturi ut repellat aliquid accusantium voluptatum minima deserunt quasi neque tenetur."
-                    />
-                </div>
-            </div>
-            <!-- 500 x 700 -->
-            <img
-                class="absolute bottom-[-50px] left-[-150px] h-[500px] z-0 opacity-25"
-                src="/img/bunga-2.png"
-            />
+        <div style="background-image: url('/img/bg.png')">
+            <IndexMempelai />
+            <IndexKisah />
         </div>
-        <div class="group-index-content bg-green-gradient">
-            <div class="isi text-yellow text-xs py-20">
-                <h1 class="judul text-yellow-gradient">Acara Pernikahan</h1>
-                <p class="judul text-yellow-gradient">﷽</p>
-                <p>
-                    Kami akan mengadakan acara Lorem ipsum dolor sit amet
-                    consectetur, adipisicing elit. Vel, atque!
-                </p>
-                <div class="seksi-acara">
-                    <h2 class="text-yellow-gradient">Akad Nikah</h2>
-                    <p>3 September 2022 | XX Safhar 1444 H</p>
-                    <p>
-                        Jalan XX Penganjuran, Kecamatan Banyuwangi, Banyuwangi
-                    </p>
-                </div>
-                <div class="seksi-acara">
-                    <h2 class="text-yellow-gradient">Ngunduh Mantu</h2>
-                    <p>11 September 2022 | XX Safhar 1444 H</p>
-                    <p>Jalan XX Penganjuran, Kota Malang</p>
-                </div>
-            </div>
-            <!-- 614 x 922 -->
-            <img
-                class="gambar bottom-[-170px] left-[-120px] h-[300px] scale-x-[-1]"
-                src="/img/bunga-1.png"
-            />
+        <IndexAcara />
+        <div class="relative" style="background-image: url('/img/bg.png')">
+            <IndexGalery />
+            <IndexAlbum />
+            <IndexHadiah />
+            <IndexReservasi />
+            <IndexKomentar />
+            <IndexEnd />
         </div>
-        <IndexGalery />
-        <IndexHadiah />
-        <IndexReservasi />
-        <IndexKomentar />
-        <IndexEnd />
         <div
-            class="group-index-content h-20 text-light-yellow bg-dark-green flex justify-center items-center"
+            class="p-2 text-light-yellow bg-dark-green flex flex-col justify-center items-center"
         >
-            <p>Develop with 🤍 by Mempelai Pria</p>
+            <p>Dibuat dengan penuh 🤍 oleh kedua mempelai</p>
+            <div class="flex items-center space-x-1">
+                <svg
+                    version="1.1"
+                    id="Capa_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    class="h-3 w-3 text-yellow"
+                    viewBox="0 0 367.467 367.467"
+                    xml:space="preserve"
+                    fill="currentColor"
+                >
+                    <g>
+                        <path
+                            d="M183.73,0.018C82.427,0.018,0,82.404,0,183.733c0,101.289,82.427,183.716,183.73,183.716
+		c101.315,0,183.737-82.427,183.737-183.716C367.467,82.404,285.045,0.018,183.73,0.018z M183.73,326.518
+		c-78.743,0-142.798-64.052-142.798-142.784c0-78.766,64.055-142.817,142.798-142.817c78.752,0,142.807,64.052,142.807,142.817
+		C326.536,262.466,262.481,326.518,183.73,326.518z"
+                        />
+                        <path
+                            d="M244.036,217.014c-11.737,20.141-33.562,32.635-56.956,32.635c-36.329,0-65.921-29.585-65.921-65.915
+		c0-36.36,29.592-65.955,65.921-65.955c23.395,0,45.219,12.54,56.956,32.641l1.517,2.627h44.28l-2.658-7.129
+		c-7.705-20.413-21.225-37.769-39.122-50.157c-17.942-12.42-39.017-19.009-60.973-19.009c-58.981,0-106.946,48.006-106.946,106.982
+		c0,58.98,47.965,106.941,106.946,106.941c21.956,0,43.03-6.567,60.973-19.006c17.897-12.391,31.417-29.741,39.122-50.154
+		l2.658-7.133h-44.28L244.036,217.014z"
+                        />
+                    </g>
+                </svg>
+                <span>2022</span>
+            </div>
         </div>
     </div>
 </template>
@@ -83,6 +70,9 @@ import IndexReservasi from "./IndexKonfirmasi.vue";
 import IndexEnd from "./IndexEnd.vue";
 import IndexKomentar from "./IndexKomentar.vue";
 import IndexMempelai from "./IndexMempelai.vue";
+import IndexKisah from "./IndexKisah.vue";
+import IndexAcara from "./IndexAcara.vue";
+import IndexAlbum from "./IndexAlbum.vue";
 export default {
     data() {
         return {
@@ -102,6 +92,9 @@ export default {
         IndexEnd,
         IndexKomentar,
         IndexMempelai,
+        IndexKisah,
+        IndexAcara,
+        IndexAlbum,
     },
 };
 </script>

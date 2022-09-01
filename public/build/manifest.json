@@ -1,35 +1,43 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.dfe1f84a.js",
+    "file": "assets/app.f1df47c4.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
+      "resources/js/Pages/Admin/AdminTabel.vue",
       "resources/js/Pages/Admin/CekAkses.vue",
-      "resources/js/Pages/Cetak/Label copy.vue",
+      "resources/js/Pages/Cetak/Label c.vue",
       "resources/js/Pages/Cetak/Label.vue",
       "resources/js/Pages/Cetak/PetaBelakang.vue",
       "resources/js/Pages/Cetak/PetaBelakangImg.vue",
       "resources/js/Pages/Cetak/PetaDepan.vue",
-      "resources/js/Pages/Index/Index cc.vue",
+      "resources/js/Pages/Index/Index copy.vue",
       "resources/js/Pages/Index/Index.vue",
+      "resources/js/Pages/Index/IndexAcara.vue",
+      "resources/js/Pages/Index/IndexAlbum.vue",
+      "resources/js/Pages/Index/IndexAmplop copy.vue",
       "resources/js/Pages/Index/IndexAmplop.vue",
       "resources/js/Pages/Index/IndexContent.vue",
       "resources/js/Pages/Index/IndexContentKisah.vue",
       "resources/js/Pages/Index/IndexEnd.vue",
       "resources/js/Pages/Index/IndexGalery.vue",
       "resources/js/Pages/Index/IndexHadiah.vue",
+      "resources/js/Pages/Index/IndexKisah.vue",
       "resources/js/Pages/Index/IndexKomentar.vue",
+      "resources/js/Pages/Index/IndexKonfirmasi copy 2.vue",
+      "resources/js/Pages/Index/IndexKonfirmasi copy.vue",
       "resources/js/Pages/Index/IndexKonfirmasi.vue",
       "resources/js/Pages/Index/IndexMempelai.vue",
+      "resources/js/Pages/Online/OnlinePoster.vue",
       "resources/js/Pages/TesQrcode.vue"
     ],
     "css": [
-      "assets/app.6ca58cda.css"
+      "assets/app.9cc0bb7d.css"
     ]
   },
-  "resources/js/Pages/Admin/CekAkses.vue": {
-    "file": "assets/CekAkses.747dfaf9.js",
-    "src": "resources/js/Pages/Admin/CekAkses.vue",
+  "resources/js/Pages/Admin/AdminTabel.vue": {
+    "file": "assets/AdminTabel.7e23db28.js",
+    "src": "resources/js/Pages/Admin/AdminTabel.vue",
     "isDynamicEntry": true,
     "imports": [
       "__plugin-vue_export-helper.cdc0426e.js",
@@ -39,9 +47,18 @@
   "__plugin-vue_export-helper.cdc0426e.js": {
     "file": "assets/_plugin-vue_export-helper.cdc0426e.js"
   },
-  "resources/js/Pages/Cetak/Label copy.vue": {
-    "file": "assets/Label copy.51b2f70d.js",
-    "src": "resources/js/Pages/Cetak/Label copy.vue",
+  "resources/js/Pages/Admin/CekAkses.vue": {
+    "file": "assets/CekAkses.2bd8f39b.js",
+    "src": "resources/js/Pages/Admin/CekAkses.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper.cdc0426e.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Cetak/Label c.vue": {
+    "file": "assets/Label c.c53f6195.js",
+    "src": "resources/js/Pages/Cetak/Label c.vue",
     "isDynamicEntry": true,
     "imports": [
       "__plugin-vue_export-helper.cdc0426e.js",
@@ -49,7 +66,7 @@
     ]
   },
   "resources/js/Pages/Cetak/Label.vue": {
-    "file": "assets/Label.013079ff.js",
+    "file": "assets/Label.d25d4254.js",
     "src": "resources/js/Pages/Cetak/Label.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -58,35 +75,35 @@
     ]
   },
   "resources/js/Pages/Cetak/PetaBelakang.vue": {
-    "file": "assets/PetaBelakang.1fa395cc.js",
+    "file": "assets/PetaBelakang.583e33ae.js",
     "src": "resources/js/Pages/Cetak/PetaBelakang.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/Pages/Cetak/PetaBelakangImg.vue",
       "__plugin-vue_export-helper.cdc0426e.js",
       "resources/js/app.js",
-      "_Qrcode.7ce40a76.js"
+      "_Qrcode.6971885b.js"
     ]
   },
   "resources/js/Pages/Cetak/PetaBelakangImg.vue": {
-    "file": "assets/PetaBelakangImg.acf6fec6.js",
+    "file": "assets/PetaBelakangImg.8e006e4d.js",
     "src": "resources/js/Pages/Cetak/PetaBelakangImg.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Qrcode.7ce40a76.js",
+      "_Qrcode.6971885b.js",
       "__plugin-vue_export-helper.cdc0426e.js",
       "resources/js/app.js"
     ]
   },
-  "_Qrcode.7ce40a76.js": {
-    "file": "assets/Qrcode.7ce40a76.js",
+  "_Qrcode.6971885b.js": {
+    "file": "assets/Qrcode.6971885b.js",
     "imports": [
       "resources/js/app.js",
       "__plugin-vue_export-helper.cdc0426e.js"
     ]
   },
   "resources/js/Pages/Cetak/PetaDepan.vue": {
-    "file": "assets/PetaDepan.796bc13b.js",
+    "file": "assets/PetaDepan.2bf45630.js",
     "src": "resources/js/Pages/Cetak/PetaDepan.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -94,9 +111,9 @@
       "resources/js/app.js"
     ]
   },
-  "resources/js/Pages/Index/Index cc.vue": {
-    "file": "assets/Index cc.fc82d68c.js",
-    "src": "resources/js/Pages/Index/Index cc.vue",
+  "resources/js/Pages/Index/Index copy.vue": {
+    "file": "assets/Index copy.b0044795.js",
+    "src": "resources/js/Pages/Index/Index copy.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/Pages/Index/IndexAmplop.vue",
@@ -109,11 +126,14 @@
       "resources/js/Pages/Index/IndexKonfirmasi.vue",
       "resources/js/Pages/Index/IndexEnd.vue",
       "resources/js/Pages/Index/IndexKomentar.vue",
-      "resources/js/Pages/Index/IndexMempelai.vue"
+      "resources/js/Pages/Index/IndexMempelai.vue",
+      "resources/js/Pages/Index/IndexKisah.vue",
+      "resources/js/Pages/Index/IndexAcara.vue",
+      "resources/js/Pages/Index/IndexAlbum.vue"
     ]
   },
   "resources/js/Pages/Index/IndexAmplop.vue": {
-    "file": "assets/IndexAmplop.63220971.js",
+    "file": "assets/IndexAmplop.6b1428de.js",
     "src": "resources/js/Pages/Index/IndexAmplop.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -125,7 +145,7 @@
     ]
   },
   "resources/js/Pages/Index/IndexContent.vue": {
-    "file": "assets/IndexContent.06ad1745.js",
+    "file": "assets/IndexContent.ac2bd047.js",
     "src": "resources/js/Pages/Index/IndexContent.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -136,12 +156,15 @@
       "resources/js/Pages/Index/IndexEnd.vue",
       "resources/js/Pages/Index/IndexKomentar.vue",
       "resources/js/Pages/Index/IndexMempelai.vue",
+      "resources/js/Pages/Index/IndexKisah.vue",
+      "resources/js/Pages/Index/IndexAcara.vue",
+      "resources/js/Pages/Index/IndexAlbum.vue",
       "__plugin-vue_export-helper.cdc0426e.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/Pages/Index/IndexContentKisah.vue": {
-    "file": "assets/IndexContentKisah.b51483c8.js",
+    "file": "assets/IndexContentKisah.8ae6750c.js",
     "src": "resources/js/Pages/Index/IndexContentKisah.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -150,7 +173,7 @@
     ]
   },
   "resources/js/Pages/Index/IndexGalery.vue": {
-    "file": "assets/IndexGalery.3b402308.js",
+    "file": "assets/IndexGalery.e5515ec0.js",
     "src": "resources/js/Pages/Index/IndexGalery.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -159,16 +182,19 @@
     ]
   },
   "resources/js/Pages/Index/IndexHadiah.vue": {
-    "file": "assets/IndexHadiah.df441a21.js",
+    "file": "assets/IndexHadiah.87c75bdb.js",
     "src": "resources/js/Pages/Index/IndexHadiah.vue",
     "isDynamicEntry": true,
     "imports": [
       "__plugin-vue_export-helper.cdc0426e.js",
       "resources/js/app.js"
+    ],
+    "css": [
+      "assets/IndexHadiah.e2b6211f.css"
     ]
   },
   "resources/js/Pages/Index/IndexKonfirmasi.vue": {
-    "file": "assets/IndexKonfirmasi.fb930c15.js",
+    "file": "assets/IndexKonfirmasi.4b4c3a34.js",
     "src": "resources/js/Pages/Index/IndexKonfirmasi.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -177,7 +203,7 @@
     ]
   },
   "resources/js/Pages/Index/IndexEnd.vue": {
-    "file": "assets/IndexEnd.300860a4.js",
+    "file": "assets/IndexEnd.c8668edf.js",
     "src": "resources/js/Pages/Index/IndexEnd.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -186,7 +212,7 @@
     ]
   },
   "resources/js/Pages/Index/IndexKomentar.vue": {
-    "file": "assets/IndexKomentar.f92a3472.js",
+    "file": "assets/IndexKomentar.759c88c2.js",
     "src": "resources/js/Pages/Index/IndexKomentar.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -195,7 +221,7 @@
     ]
   },
   "resources/js/Pages/Index/IndexMempelai.vue": {
-    "file": "assets/IndexMempelai.2353261d.js",
+    "file": "assets/IndexMempelai.60c5ff83.js",
     "src": "resources/js/Pages/Index/IndexMempelai.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -203,8 +229,36 @@
       "resources/js/app.js"
     ]
   },
+  "resources/js/Pages/Index/IndexKisah.vue": {
+    "file": "assets/IndexKisah.05d1840d.js",
+    "src": "resources/js/Pages/Index/IndexKisah.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/Pages/Index/IndexContentKisah.vue",
+      "__plugin-vue_export-helper.cdc0426e.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Index/IndexAcara.vue": {
+    "file": "assets/IndexAcara.561c0ac0.js",
+    "src": "resources/js/Pages/Index/IndexAcara.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper.cdc0426e.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/Pages/Index/IndexAlbum.vue": {
+    "file": "assets/IndexAlbum.e1a0b244.js",
+    "src": "resources/js/Pages/Index/IndexAlbum.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper.cdc0426e.js",
+      "resources/js/app.js"
+    ]
+  },
   "resources/js/Pages/Index/Index.vue": {
-    "file": "assets/Index.63ac9933.js",
+    "file": "assets/Index.e5fcf249.js",
     "src": "resources/js/Pages/Index/Index.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -218,15 +272,57 @@
       "resources/js/Pages/Index/IndexKonfirmasi.vue",
       "resources/js/Pages/Index/IndexEnd.vue",
       "resources/js/Pages/Index/IndexKomentar.vue",
-      "resources/js/Pages/Index/IndexMempelai.vue"
+      "resources/js/Pages/Index/IndexMempelai.vue",
+      "resources/js/Pages/Index/IndexKisah.vue",
+      "resources/js/Pages/Index/IndexAcara.vue",
+      "resources/js/Pages/Index/IndexAlbum.vue"
+    ]
+  },
+  "resources/js/Pages/Index/IndexAmplop copy.vue": {
+    "file": "assets/IndexAmplop copy.824f5ab3.js",
+    "src": "resources/js/Pages/Index/IndexAmplop copy.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper.cdc0426e.js",
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/IndexAmplop copy.f6385962.css"
+    ]
+  },
+  "resources/js/Pages/Index/IndexKonfirmasi copy 2.vue": {
+    "file": "assets/IndexKonfirmasi copy 2.b7eccbe3.js",
+    "src": "resources/js/Pages/Index/IndexKonfirmasi copy 2.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper.cdc0426e.js"
+    ]
+  },
+  "resources/js/Pages/Index/IndexKonfirmasi copy.vue": {
+    "file": "assets/IndexKonfirmasi copy.f2cefc74.js",
+    "src": "resources/js/Pages/Index/IndexKonfirmasi copy.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper.cdc0426e.js"
+    ]
+  },
+  "resources/js/Pages/Online/OnlinePoster.vue": {
+    "file": "assets/OnlinePoster.fa6b0325.js",
+    "src": "resources/js/Pages/Online/OnlinePoster.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper.cdc0426e.js",
+      "resources/js/app.js"
     ]
   },
   "resources/js/Pages/TesQrcode.vue": {
-    "file": "assets/TesQrcode.3e934824.js",
+    "file": "assets/TesQrcode.2d27587e.js",
     "src": "resources/js/Pages/TesQrcode.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Qrcode.7ce40a76.js",
+      "_Qrcode.6971885b.js",
       "__plugin-vue_export-helper.cdc0426e.js",
       "resources/js/app.js"
     ]
@@ -235,8 +331,16 @@
     "file": "assets/IndexAmplop.f6385962.css",
     "src": "resources/js/Pages/Index/IndexAmplop.css"
   },
+  "resources/js/Pages/Index/IndexAmplop copy.css": {
+    "file": "assets/IndexAmplop copy.f6385962.css",
+    "src": "resources/js/Pages/Index/IndexAmplop copy.css"
+  },
+  "resources/js/Pages/Index/IndexHadiah.css": {
+    "file": "assets/IndexHadiah.e2b6211f.css",
+    "src": "resources/js/Pages/Index/IndexHadiah.css"
+  },
   "resources/js/app.css": {
-    "file": "assets/app.6ca58cda.css",
+    "file": "assets/app.9cc0bb7d.css",
     "src": "resources/js/app.css"
   }
 }

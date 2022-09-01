@@ -43,58 +43,130 @@
                     class="border-yellow border-4 p-4 sm:p-20 flex flex-col items-center"
                 >
                     <h1 class="judul">Konfirmasi Kehadiran</h1>
-                    <template v-if="editMode">
-                        <div
-                            v-if="hadir === -1"
-                            class="flex flex-col justify-center items-center md:flex-row space-y-2 md:space-y-0 space-x-0 md:space-x-2 mt-8"
-                        >
-                            <p class="my-4">
-                                Tanpa mengurangi rasa hormat ... berharap
-                                Bapak/Ibu/Saudara(i) memberikan konfirmasi untuk
-                                menhadiri acara Ngunduh mantu pada jam XX XX ...
-                            </p>
-                            <button @click="konfirmasi(1)" class="btn btn-sm">
-                                Ya, hadir
-                            </button>
-                            <button @click="konfirmasi(0)" class="btn btn-sm">
-                                Maaf, tidak hadir
-                            </button>
-                        </div>
-                        <template v-else>
-                            <p>Terima kasih atas bla-bla-bla</p>
-                            <div
-                                class="flex items-center space-x-2 justify-center"
+                    <!-- USER BELUM LOGIN -->
+                    <template v-if="!$parent.$parent.user">
+                        <p>
+                            Silakan scan barcode undangan Anda terlebih dahulu
+                        </p>
+                    </template>
+                    <!-- USER BELUM KONFIRMASI -->
+                    <template v-else-if="editMode">
+                        <p>
+                            Tanpa mengurangi rasa hormat, kami bermaksud
+                            mengundang Bapak/Ibu/Saudara(i) untuk menghadiri
+                            acara
+                            <strong
+                                class="decoration-green underline decoration-2"
                             >
-                                <button
-                                    class="btn btn-sm"
-                                    @click="ubahJumlahKehadiran(-1)"
+                                {{
+                                    $parent.$parent.user.hadir_ke === "bwi"
+                                        ? "Akad Nikah"
+                                        : "Ngunduh Mantu"
+                                }}
+                            </strong>
+                            yang akan dilaksanakan pada
+                            <strong
+                                class="decoration-green underline decoration-2"
+                            >
+                                {{
+                                    $parent.$parent.user.hadir_ke === "bwi"
+                                        ? "3 September 2022"
+                                        : "11 September 2022"
+                                }}
+                            </strong>
+                            jam
+                            <strong
+                                class="decoration-green underline decoration-2"
+                            >
+                                {{
+                                    $parent.$parent.user.hadir_ke === "bwi"
+                                        ? "Akad Nikah"
+                                        : this.$parent.$parent.user.jadwal
+                                }}
+                            </strong>
+                        </p>
+                        <div>
+                            <div class="flex flex-col space-y-2">
+                                <div
+                                    v-if="diundang_ke !== 'undefined'"
+                                    class="radio"
+                                    :class="{
+                                        'radio-selected': hadir_ke === 'mlg',
+                                    }"
+                                    @click="setHadirKe('mlg')"
                                 >
-                                    -
-                                </button>
-                                <input
-                                    class="rounded-lg border-2 w-16 border-green text-2xl text-center"
-                                    v-model="hadir"
-                                />
-                                <button
-                                    class="btn btn-sm"
-                                    @click="ubahJumlahKehadiran(1)"
+                                    <div class="checkbox">
+                                        <span class="bg"></span>
+                                        <span class="centang">
+                                            <span></span>
+                                        </span>
+                                    </div>
+                                    <div>Ya, hadir</div>
+                                </div>
+                                <template v-else>
+                                    <div
+                                        class="radio"
+                                        :class="{
+                                            'radio-selected':
+                                                hadir_ke === 'bwi',
+                                        }"
+                                    >
+                                        <div class="checkbox">
+                                            <span class="bg"></span>
+                                            <span class="centang">
+                                                <span></span>
+                                            </span>
+                                        </div>
+                                        <div>Ya, hadir di Banyuwangi</div>
+                                    </div>
+                                    <div
+                                        class="radio"
+                                        :class="{
+                                            'radio-selected':
+                                                hadir_ke === 'mlg',
+                                        }"
+                                    >
+                                        <div class="checkbox">
+                                            <span class="bg"></span>
+                                            <span class="centang">
+                                                <span></span>
+                                            </span>
+                                        </div>
+                                        <div>Ya, hadir di Malang</div>
+                                    </div>
+                                </template>
+                                <div
+                                    class="radio"
+                                    :class="{
+                                        'radio-selected': hadir_ke === 'tdk',
+                                    }"
+                                    @click="setHadirKe('tdk')"
                                 >
-                                    +
+                                    <div class="checkbox">
+                                        <span class="bg"></span>
+                                        <span class="centang">
+                                            <span></span>
+                                        </span>
+                                    </div>
+                                    <div>Maaf, tidak hadir</div>
+                                </div>
+                                <button class="btn" @click="submitKonfirmasi">
+                                    Konfirmasi
                                 </button>
                             </div>
-                            <p>Orang yang akan menghadiri acara</p>
-                            <button
-                                @click="submitKonfirmasi"
-                                class="btn btn-sm"
-                            >
-                                Konfirmasi kehadiran
-                            </button>
-                        </template>
+                        </div>
                     </template>
                     <div v-else>
-                        Terima kasih atas konfirmasi
-                        <strong class="text-dark-green">kehadiran</strong>
-                        saudara sebanyak 5 orang
+                        <p>
+                            Terima kasih atas
+                            <span v-if="hadir_ke === 'tdk'">konfirmasinya</span>
+                            <strong v-else class="text-dark-green"
+                                >konfirmasi kehadirannya</strong
+                            >
+                        </p>
+                        <button class="btn mt-2" @click="edit">
+                            Konfirmasi Ulang
+                        </button>
                     </div>
                 </div>
             </div>
@@ -103,6 +175,30 @@
         <img
             class="gambar top-[-100px] right-[-100px] h-[500px] rotate-180 scale-x-[-1]"
             src="/img/bunga-1.png"
+        />
+        <!-- gradient ijo -->
+        <svg viewBox="0 0 500 500" fill="none" class="gambar">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop
+                        offset="0%"
+                        style="stop-color: #5b912f; stop-opacity: 1"
+                    />
+                    <stop
+                        offset="100%"
+                        style="stop-color: rgb(255, 255, 255); stop-opacity: 0"
+                    />
+                </linearGradient>
+            </defs>
+            <path
+                fill="url(#grad1)"
+                d="M0.012,164.716C0.012,164.716 116.907,108.433 249.469,165.229C382.421,222.193 500.392,165.745 500.392,165.745L501.102,498.991L-0.11,499.209L0.012,164.716Z"
+            />
+        </svg>
+        <!-- bunga bawah -->
+        <img
+            class="gambar bottom-[-500px] right-0 h-[1000px]"
+            src="/img/bunga-3.png"
         />
     </div>
 </template>
@@ -113,27 +209,42 @@ import { Inertia } from "@inertiajs/inertia";
 export default {
     data() {
         return {
-            hadir: this.$parent.$parent.user.hadir,
-            editMode: this.$parent.$parent.user.hadir === -1 ? true : false,
+            // konfirmasi_kehadiran: null,
+            diundang_ke: undefined,
+            jadwal: undefined,
+            editMode: false,
+            // check: true,
+            hadir_ke: undefined,
         };
     },
     methods: {
+        edit() {
+            this.editMode = true;
+        },
         konfirmasi(value) {
             this.hadir = value;
-            if (value === 1) return;
+            // if (value === 1) return;
             this.submitKonfirmasi();
         },
         ubahJumlahKehadiran(value) {
             if (value === -1 && this.hadir === 1) return;
             this.hadir += value;
         },
+        konfirmasiJumlah() {
+            this.submitKonfirmasi();
+            this.editJumlahKehadiran;
+        },
+        setHadirKe(val) {
+            this.hadir_ke = val;
+        },
         async submitKonfirmasi() {
             Inertia.post(
                 "/api/konfirmasi",
-                { hadir: this.hadir, param: this.$parent.$parent.param },
+                { hadir_ke: this.hadir_ke, param: this.$parent.$parent.param },
                 {
                     onSuccess: () => {
-                        alert("sukses");
+                        alert("Sukses menyimpan data");
+                        this.editMode = false;
                     },
                     onError: (error) => {
                         alert(error);
@@ -142,7 +253,15 @@ export default {
             );
         },
     },
+    mounted() {
+        // jika user sudah login
+        if (this.$parent.$parent.user) {
+            this.diundang_ke = this.$parent.$parent.user.diundang_ke;
+            this.hadir_ke = this.$parent.$parent.user.hadir_ke;
+            if (this.hadir_ke === "undefined") {
+                this.editMode = true;
+            }
+        }
+    },
 };
 </script>
-
-<style></style>

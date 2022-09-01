@@ -7,21 +7,34 @@
             >
                 <div
                     style="background-image: url('/img/bg.png')"
-                    class="border-yellow border-4 p-4 sm:p-20 flex flex-col items-stretch"
+                    class="border-yellow border-4 p-4 sm:p-20 flex flex-col items-center justify-center space-y-2"
                 >
-                    <h1 class="judul">Pesan dan Harapan untuk Kami</h1>
-                    <p>{{ $parent.$parent.user.nama }}</p>
-                    <textarea
-                        style="background-color: rgba(240, 240, 240, 0.6)"
-                        class="shadow-lg rounded-lg p-2"
-                        v-model="pesan"
-                    ></textarea>
-                    <button class="btn btn-sm" @click="kirim">Kirim</button>
-                    <div class="flex flex-col items-start space-x-2">
+                    <h1 class="judul">Pesan dan Harapan</h1>
+                    <template v-if="$parent.$parent.user">
+                        <template v-if="editMode">
+                            <textarea
+                                style="
+                                    background-color: rgba(240, 240, 240, 0.6);
+                                "
+                                class="shadow-lg rounded-lg p-2 w-full focus:border outline-none focus:border-dark-green"
+                                v-model="pesan"
+                            ></textarea>
+                            <button class="btn btn-sm" @click="kirim">
+                                Kirim
+                            </button>
+                        </template>
+                        <button v-else class="btn" @click="editMode = true">
+                            Edit Komentar
+                        </button>
+                        <!-- <p>{{ $parent.$parent.user.nama }}</p> -->
+                    </template>
+                    <div class="flex flex-col items-start space-y-2">
                         <template v-if="pesans.length">
                             <template
-                                v-for="pesan in pesans[halamanPesanAktif - 1]"
-                                :key="pesan.id"
+                                v-for="(pesan, i) in pesans[
+                                    halamanPesanAktif - 1
+                                ]"
+                                :key="i"
                             >
                                 <div class="flex items-start">
                                     <svg
@@ -91,31 +104,26 @@
                                 </div>
                             </template>
                         </template>
-                        <div class="flex rounded-lg overflow-hidden w-fit">
-                            <button
-                                class="p-2 hover:bg-green-gradient hover:text-lime-200 hover:border-none"
-                                :class="[
-                                    // 'btn rounded-none': n === halamanPesanAktif,
-                                    n === halamanPesanAktif
-                                        ? 'btn rounded-none border-none'
-                                        : 'border-y',
-                                ]"
-                                v-for="n in jumlahHalamanPesan"
-                                :key="n"
-                                @click="ubahHalaman(n)"
-                            >
-                                {{ n }}
-                            </button>
-                        </div>
+                    </div>
+                    <div class="flex rounded-lg overflow-scroll w-48">
+                        <button
+                            class="p-2 hover:bg-green-gradient hover:text-lime-200 hover:border-none"
+                            :class="[
+                                // 'btn rounded-none': n === halamanPesanAktif,
+                                n === halamanPesanAktif
+                                    ? 'btn rounded-none border-none'
+                                    : 'border-y',
+                            ]"
+                            v-for="n in jumlahHalamanPesan"
+                            :key="n"
+                            @click="ubahHalaman(n)"
+                        >
+                            {{ n }}
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 744 x 835 -->
-        <img
-            class="gambar top-[-100px] right-[-100px] h-[500px] rotate-180 scale-x-[-1]"
-            src="/img/bunga-1.png"
-        />
     </div>
 </template>
 
@@ -128,6 +136,7 @@ export default {
             pesan: "",
             pesans: [],
             halamanPesanAktif: 1,
+            editMode: true,
         };
     },
     methods: {
@@ -143,6 +152,8 @@ export default {
                 {
                     onSuccess: () => {
                         alert("berhasil mengirim pesan");
+                        this.getPesan();
+                        this.editMode = false;
                     },
                     onError: (err) => {
                         console.log(err);
@@ -153,23 +164,39 @@ export default {
         ubahHalaman(value) {
             this.halamanPesanAktif = value;
         },
+        async getPesan() {
+            this.pesans = [];
+            let res = await fetch("/api/pesan");
+            res = await res.json();
+            let pesans = [];
+            if (this.$parent.$parent.user) {
+                const pesanUser = res.find((p) => {
+                    return p.undangan_id === this.$parent.$parent.user.id;
+                });
+                if (pesanUser) {
+                    console.log("punya pesan");
+                    pesans = res.filter((p) => {
+                        return p.undangan_id !== this.$parent.$parent.user.id;
+                    });
+                    pesans.unshift(pesanUser);
+                    this.pesan = pesanUser.isi;
+                } else {
+                    pesans = res;
+                }
+                // this.pesan = this.pesans[0];
+            } else {
+                pesans = res;
+            }
+            while (pesans.length) {
+                this.pesans.push(pesans.splice(0, 5));
+            }
+        },
     },
     async mounted() {
-        let res = await fetch("/api/pesan");
-        res = await res.json();
-        let pesans = [];
-        pesans = res.filter((p) => {
-            return p.undangan_id !== this.$parent.$parent.user.id;
-        });
-        pesans.unshift(
-            res.find((p) => {
-                return p.undangan_id === this.$parent.$parent.user.id;
-            })
-        );
-        while (pesans.length) {
-            this.pesans.push(pesans.splice(0, 10));
+        await this.getPesan();
+        if (this.pesan) {
+            this.editMode = false;
         }
-        this.pesan = this.pesans[0][0].isi;
     },
     computed: {
         jumlahHalamanPesan() {

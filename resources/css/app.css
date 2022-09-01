@@ -24,16 +24,14 @@
             hover:text-lime-100
             z-10
             hover:before:translate-x-0
-            before:transition;
+            before:transition
+            p-2;
     }
     .btn::before {
         @apply absolute bg-green-gradient h-full w-[200%] top-0 left-0
         -translate-x-1/2
         -z-10
          content-[''];
-    }
-    .btn-sm {
-        @apply p-2 text-lg;
     }
 
     .bg-green-gradient {
@@ -46,13 +44,13 @@
         @apply text-transparent bg-clip-text bg-gradient-to-br from-light-green to-light-yellow;
     }
     .group-index-content {
-        @apply relative flex flex-col items-center px-10;
+        @apply relative flex flex-col items-center justify-center min-h-screen;
     }
     .group-index-content .judul {
-        @apply text-3xl md:text-5xl font-kaushan;
+        @apply text-5xl md:text-7xl font-kaushan judul-shadow  mb-8;
     }
     .group-index-content .isi {
-        @apply z-40 w-full flex flex-col items-center justify-center min-h-screen;
+        @apply z-40 w-full flex flex-col items-center justify-center  max-w-3xl px-16;
     }
     .group-index-content .gambar {
         @apply absolute z-0;
@@ -65,5 +63,66 @@
     }
     .group-index-content .seksi-acara p:nth-child(2) {
         @apply text-sm font-comforta-bold mt-1;
+    }
+
+    .radio {
+        @apply hover:cursor-pointer flex space-x-2 items-center p-2 rounded-xl shadow hover:shadow-lg border-2 border-slate-300;
+    }
+    .radio-selected {
+        @apply border-dark-green;
+    }
+
+    .radio .checkbox {
+        @apply relative h-6 w-6 rounded overflow-hidden;
+    }
+    .radio .checkbox .bg {
+        @apply shadow-lg absolute top-0 left-0 border-[0.2rem] bg-slate-100 border-slate-300 h-6 w-6 transition-all duration-300;
+    }
+    .radio-selected .checkbox .bg {
+        @apply border-[0.75rem] border-dark-green;
+    }
+    .radio .checkbox .centang {
+        @apply absolute h-6 w-6  top-0 left-0  flex items-center justify-center;
+    }
+    .radio .checkbox .centang span {
+        @apply border-0  h-0 w-0  border-yellow transition-all duration-300;
+    }
+    .radio-selected .checkbox .centang span {
+        @apply border-l-2 border-b-2 h-2 w-4 -rotate-45;
+    }
+}
+
+@layer utilities {
+    .judul-shadow {
+        text-shadow: -1px 1px 2px #041f00;
+    }
+    .fade-in-rotate {
+        -webkit-animation: fade-in-rotate 2s cubic-bezier(0.39, 0.575, 0.565, 1)
+            both;
+        animation: fade-in-rotate 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    }
+    @-webkit-keyframes fade-in-rotate {
+        0% {
+            -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            opacity: 1;
+        }
+    }
+    @keyframes fade-in-rotate {
+        0% {
+            -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            opacity: 1;
+        }
     }
 }
